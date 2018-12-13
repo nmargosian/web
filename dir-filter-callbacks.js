@@ -55,37 +55,6 @@ function dirFilterWithCallbacks(pattern, fromDir, toDir) {
   });
 }
 
-function mkdir(toDir, err) {
-	return new Promise((resolve, reject) => {
-		if (err) {
-			if (err.code === 'EEXIST') {
-				// Don't freak out if it already exists.
-				console.warn(`Desination directory '${toDir}' already exists; continuing`);
-			} else {
-				reject(err);
-			}
-		} else {
-			resolve();
-		}
-	});
-}
-
-
-
-/*function dirFilterWithPromises(pattern, fromDir, toDir) {
-	// Create a regular expresion from the pattern on the command line.
-  const re = RegExp(pattern);
-  // Create the "to" directory.
-  fs.mkdir(toDir, err => {
-	if (err) {
-	  if (err.code === 'EEXIST') {
-		// Don't freak out if it already exists.
-		console.warn(`Desination directory '${toDir}' already exists; continuing`);
-	  } else {
-		throw(err);
-	  }
-	}
-}*/
 // Get the name of the program for error reporting.
 const prog = path.basename(process.argv[1]);
 

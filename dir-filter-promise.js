@@ -75,6 +75,7 @@ function readdir(fromDir, err, fileNames) {
 		if (err) {
 			reject(err);
 		}
+		
 	});
 }
 
@@ -112,6 +113,7 @@ function writeFile(toPath, ouputLines, err) {
 }
 
 
+
 /*function dirFilterWithPromises(pattern, fromDir, toDir) {
 	// Create a regular expresion from the pattern on the command line.
 const re = RegExp(pattern);
@@ -138,6 +140,8 @@ process.exit(1);
 // Extract and echo relevant arguments from the command line.
 let [ , , pattern, fromDir, toDir] = process.argv;
 console.log(`Match '${pattern}' from files in '${fromDir}' to '${toDir}'`);
+
+fs.mkdir(pattern, fromDir, toDir).then(() => readdir({pattern}))
 
 dirFilterWithCallbacks(pattern, fromDir, toDir);
 
